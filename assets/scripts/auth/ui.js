@@ -4,18 +4,17 @@ const store = require('../store.js')
 
 // Displays that user has signed up successfully
 const signUpSuccess = (response) => {
-  console.log('sign up sucess')
+  $('.loginAlert').text('You have successfully signed up')
 }
 
 // Displays users failure to sign up
 const signUpFailure = (error) => {
-  console.log('sign up failure')
+  $('.loginAlert').text('Not a viable username.')
 }
 
 // Hides login-info section, sets the board and footer to visible on success
 const signInSuccess = (response) => {
   store.user = response.user
-  console.log('sign in success')
   document.querySelector('.login').style.visibility = 'hidden'
   document.querySelector('.core').style.visibility = 'visible'
   document.querySelector('.logout').style.visibility = 'visible'
@@ -23,32 +22,30 @@ const signInSuccess = (response) => {
 
 // Displays users failure to sign in
 const signInFailure = (error) => {
-  console.log('sign in failure')
+  $('.loginAlert').text('login attempt failed.')
 }
 
 // Displays that user has successfully changed password
 const changePasswordSuccess = (response) => {
-  console.log('Password changed successfully.')
+  $('.pass-change-alert').text('Password successfully changed')
 }
 
 // Displays that user has failed to change password
 const changePasswordFailure = (error) => {
-  console.log('Password changed successfully.')
+  $('.pass-change-alert').text('Original password incorrect, please input the correct one to proceed')
 }
 
 // displays that user has logged out. Sets board and footer to hidden, makes login-info visible
 const signOutSuccess = (response) => {
   store.user = null
-  console.log('sign out success')
+  $('.loginAlert').text('You have logged out')
   document.querySelector('.login').style.visibility = 'visible'
   document.querySelector('.core').style.visibility = 'hidden'
   document.querySelector('.logout').style.visibility = 'hidden'
 }
 
 // Makes fun of you if you fail to sign out
-const signOutFailure = (error) => {
-  console.log('sign out failure')
-}
+const signOutFailure = (error) => {}
 
 module.exports = {
   signUpSuccess,
