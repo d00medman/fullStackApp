@@ -12,18 +12,51 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Ledger</h1>
+      <h1>My Favorite Movies</h1>
 
       <div class="login">
         <h2>Login forms here</h2>
+        <form id="sign-up">
+          <fieldset>
+            <legend>Sign up</legend>
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="password" name="credentials[password]" placeholder="password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="password confirmation">
+            <input type="submit" name="submit" value="Sign up!">
+          </fieldset>
+        </form>
+        <form id ="sign-in">
+          <fieldset>
+            <legend>Sign in</legend>
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="password" name="credentials[password]" placeholder="password">
+            <input type="submit" name="submit" value="Sign in!">
+          </fieldset>
+        </form>
       </div>
 
       <div class="core">
-        <h2>core front end functionality here</h2>
+        <h2>These are a few of my favorite movies</h2>
+        <ul class="faves">
+          <li>Mad Max: Fury Road</li>
+          <li>The Big Short</li>
+          <li>Annie Hall</li>
+        </ul>
       </div>
 
       <div class="logout">
         <h2>Logout and change password forms here</h2>
+        <form id="change-password">
+          <fieldset>
+            <legend>Change Password</legend>
+            <input type="password" name="passwords[old]" placeholder="Old password">
+            <input type="password" name="passwords[new]" placeholder="new password">
+            <input type="submit" name="submit" value="Change Password!">
+          </fieldset>
+        </form>
+        <form id ="sign-out">
+          <input type="submit" name="submit" value="Sign Out.">
+        </form>
       </div>
 
     </body>
