@@ -16,6 +16,9 @@ const signUpFailure = (error) => {
 const signInSuccess = (response) => {
   store.user = response.user
   console.log('sign in success')
+  document.querySelector('.login').style.visibility = 'hidden'
+  document.querySelector('.core').style.visibility = 'visible'
+  document.querySelector('.logout').style.visibility = 'visible'
 }
 
 // Displays users failure to sign in
@@ -37,6 +40,9 @@ const changePasswordFailure = (error) => {
 const signOutSuccess = (response) => {
   store.user = null
   console.log('sign out success')
+  document.querySelector('.login').style.visibility = 'visible'
+  document.querySelector('.core').style.visibility = 'hidden'
+  document.querySelector('.logout').style.visibility = 'hidden'
 }
 
 // Makes fun of you if you fail to sign out
