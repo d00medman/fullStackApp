@@ -19,3 +19,9 @@ const authEvents = require('./auth/events.js')
 $(() => {
   authEvents.addHandlers()
 })
+
+const coreEvents = require('./main.js')
+
+$(() => {
+  coreEvents.addHandlers()
+})
