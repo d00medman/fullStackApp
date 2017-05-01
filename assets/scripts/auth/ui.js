@@ -15,8 +15,11 @@ const signUpFailure = (error) => {
 // Hides login-info section, sets the board and footer to visible on success
 const signInSuccess = (response) => {
   store.user = response.user
+  // may be problematic -> causing some twitchy behavior with other buttons
   const login = document.querySelector('.login')
   $(login).hide()
+  // may be problematic
+  // document.querySelector('.login').style.visibility = 'hidden'
   document.querySelector('.core').style.visibility = 'visible'
   document.querySelector('.logout').style.visibility = 'visible'
 }
@@ -39,9 +42,11 @@ const changePasswordFailure = (error) => {
 // displays that user has logged out. Sets board and footer to hidden, makes login-info visible
 const signOutSuccess = (response) => {
   store.user = null
+
   $('.loginAlert').text('You have logged out')
   const login = document.querySelector('.login')
   $(login).show()
+  //document.querySelector('.login').style.visibility = 'visible'
   document.querySelector('.core').style.visibility = 'hidden'
   document.querySelector('.logout').style.visibility = 'hidden'
 }
