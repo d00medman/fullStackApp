@@ -1,6 +1,7 @@
 'use strict'
 
 const test = function (event) {
+  event.preventDefault()
   console.log('works')
 }
 

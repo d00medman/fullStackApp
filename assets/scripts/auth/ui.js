@@ -42,7 +42,6 @@ const changePasswordFailure = (error) => {
 // displays that user has logged out. Sets board and footer to hidden, makes login-info visible
 const signOutSuccess = (response) => {
   store.user = null
-
   $('.loginAlert').text('You have logged out')
   const login = document.querySelector('.login')
   $(login).show()
