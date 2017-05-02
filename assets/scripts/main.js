@@ -1,9 +1,13 @@
 'use strict'
 
+const getFormFields = require(`../../lib/get-form-fields`)
+
 const test = function (event) {
   event.preventDefault()
-  // need to find some way to read from the form and console log the input
-  console.log('works')
+  const data = getFormFields(this)
+  // this sort of works. Now, data returns as an object, but I still need to extract
+  // a string
+  console.log(data)
 }
 
 const addHandlers = () => {
