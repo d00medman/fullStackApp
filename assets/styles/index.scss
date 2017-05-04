@@ -4,6 +4,12 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 body{
  text-align: center;
  margin:0;
+ font-family: "Times New Roman", Times, serif;
+}
+
+.fave{
+  border: 2px solid #ff6666;
+  background-color: white;
 }
 
 .sign-up{

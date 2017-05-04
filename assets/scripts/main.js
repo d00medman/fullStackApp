@@ -1,12 +1,15 @@
+// a holding file at this point in time. May end up deleted.
+
 'use strict'
 
 const getFormFields = require(`../../lib/get-form-fields`)
 
 const test = function (event) {
   event.preventDefault()
-  const data = getFormFields(this)
+  let data = getFormFields(this)
   // this sort of works. Now, data returns as an object, but I still need to extract
   // a string
+  data = data.key
   console.log(data)
 }
 

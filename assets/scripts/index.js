@@ -20,8 +20,8 @@ $(() => {
   authEvents.addHandlers()
 })
 
-const coreEvents = require('./main.js')
+const movieEvents = require('./movies/events.js')
 
 $(() => {
-  coreEvents.addHandlers()
+  movieEvents.addHandlers()
 })
