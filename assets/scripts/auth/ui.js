@@ -45,7 +45,7 @@ const signOutSuccess = (response) => {
   $('.loginAlert').text('You have logged out')
   const login = document.querySelector('.login')
   $(login).show()
-  //document.querySelector('.login').style.visibility = 'visible'
+  document.querySelector('.login').style.visibility = 'visible'
   document.querySelector('.core').style.visibility = 'hidden'
   document.querySelector('.logout').style.visibility = 'hidden'
 }
