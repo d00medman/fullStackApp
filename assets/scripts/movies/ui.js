@@ -53,6 +53,18 @@ const destroyFailure = (error) => {
   // burndown
 }
 
+const updateSuccess = (response) => {
+  // burndown
+  console.log('successful update')
+  // burndown
+}
+
+const updateFailure = (error) => {
+  // burndown
+  console.log('update failed')
+  // burndown
+}
+
 module.exports = {
   createSuccess,
   createFailure,
@@ -61,5 +73,7 @@ module.exports = {
   showSuccess,
   showFailure,
   destroySuccess,
-  destroyFailure
+  destroyFailure,
+  updateSuccess,
+  updateFailure
 }

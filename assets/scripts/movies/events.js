@@ -38,19 +38,29 @@ const onDestroy = function (event) {
     .catch(ui.destroyFailure)
 }
 
-// const onUpdate = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(this)
-//   api.update(data)
-//     .then(ui.updateSuccess)
-//     .catch(ui.updateFailure)
-// }
+const onUpdate = function (event) {
+  event.preventDefault()
+  let data = getFormFields(event.target)
+  data = data.movie
+  api.update(data)
+    .then(ui.updateSuccess)
+    .catch(ui.updateFailure)
+}
+
+// // burndown
+// console.log(data)
+// // burndown
+// // burndown
+// console.log(data)
+// console.log(data.id)
+// // burndown
 
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
   $('.index').on('click', onIndex)
   $('.show').on('submit', onShow)
   $('.destroy').on('submit', onDestroy)
+  $('.update').on('submit', onUpdate)
 }
 
 module.exports = {
