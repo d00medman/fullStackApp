@@ -14,14 +14,16 @@ const onCreate = function (event) {
     .catch(ui.createFailure)
 }
 
-const test = function (event) {
+const onIndex = function (event) {
   event.preventDefault()
-  console.log(getFormFields(this))
+  api.index()
+    .then(ui.indexSuccess)
+    .catch(ui.indexFailure)
 }
 
 const addHandlers = () => {
   $('.fave-submit').on('submit', onCreate)
-  $('.test-submit').on('submit', test)
+  $('.index').on('click', onIndex)
 }
 
 module.exports = {
