@@ -41,19 +41,18 @@ const onDestroy = function (event) {
 const onUpdate = function (event) {
   event.preventDefault()
   let data = getFormFields(event.target)
+  // burndown
+  console.log(data)
+  // burndown
   data = data.movie
+  // burndown
+  console.log(data)
+  console.log(data.id)
+  // burndown
   api.update(data)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
 }
-
-// // burndown
-// console.log(data)
-// // burndown
-// // burndown
-// console.log(data)
-// console.log(data.id)
-// // burndown
 
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
