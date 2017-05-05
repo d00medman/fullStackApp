@@ -54,6 +54,7 @@ const destroyFailure = (error) => {
 
 const updateSuccess = (response) => {
   // burndown
+  console.log(response)
   console.log('successful update')
   // burndown
 }

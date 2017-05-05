@@ -40,16 +40,9 @@ const onDestroy = function (event) {
 
 const onUpdate = function (event) {
   event.preventDefault()
-  let data = getFormFields(event.target)
-  // burndown
-  console.log(data)
-  // burndown
-  data = data.movie
-  // burndown
-  console.log(data)
-  console.log(data.id)
-  // burndown
-  api.update(data)
+  const data = getFormFields(event.target)
+  const targ = data.movie
+  api.update(data, targ)
     .then(ui.updateSuccess)
     .catch(ui.updateFailure)
 }
