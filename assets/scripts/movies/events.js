@@ -5,15 +5,16 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
-const test = function (event) {
+const onCreate = function (event) {
   event.preventDefault()
-  let data = getFormFields(this)
-  data = data.key
-  console.log(data)
+  const data = getFormFields(this)
+  api.create(data)
+    .then(ui.createSuccess)
+    .catch(ui.createFailure)
 }
 
 const addHandlers = () => {
-  $('.fave').on('click', test)
+  $('.fave-submit').on('submit', onCreate)
 }
 
 module.exports = {
