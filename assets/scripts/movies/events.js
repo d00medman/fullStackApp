@@ -22,15 +22,20 @@ const onIndex = function (event) {
 
 const onShow = function (event) {
   event.preventDefault()
-  const data = getFormFields(this)
-  console.log(data)
-  // problem is that ajax call needs to be passed a straight up int. Is instead
-  // being passed an object, causing the url to be impropery appended thus throwing
-  // the 404 error
-  api.show(data)
+  let data = getFormFields(event.target)
+  data = data.movie
+  api.show(data.id)
     .then(ui.showSuccess)
     .catch(ui.showFailure)
 }
+
+// const onUpdate = function (event) {
+//   event.preventDefault()
+//   const data = getFormFields(this)
+//   api.update(data)
+//     .then(ui.updateSuccess)
+//     .catch(ui.updateFailure)
+// }
 
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
