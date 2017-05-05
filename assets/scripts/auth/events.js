@@ -8,6 +8,9 @@ const ui = require('./ui')
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
+  // burndown
+  console.log(data)
+  // burndown
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -16,6 +19,9 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
+  // burndown
+  console.log(data)
+  // burndown
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
