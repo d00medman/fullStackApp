@@ -12,7 +12,6 @@ const destroySuccess = (response) => {
   console.log(response)
   $('.core-alert').text('You have removed a movie from your list of favorites')
   $(response.target).parent().remove()
-  // lol no idea if this is right or not.
 }
 
 const destroyFailure = (error) => {

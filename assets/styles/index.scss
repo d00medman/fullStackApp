@@ -7,9 +7,9 @@ body{
  font-family: "Times New Roman", Times, serif;
 }
 
-.fave{
-  border: 2px solid #ff6666;
+.destroy{
   background-color: white;
+  // float: right;
 }
 
 .sign-up{
@@ -22,4 +22,28 @@ body{
 
 .logout{
   visibility: hidden;
+}
+
+.show{
+  visibility: hidden;
+}
+
+.update{
+  visibility: hidden;
+}
+
+.create{
+  padding-top: 1cm;
+}
+
+.logout-banner{
+  padding-bottom: .5cm;
+}
+
+#sign-out{
+  padding-top: .25cm;
+}
+
+#sign-in{
+  padding-top: .25cm;
 }
