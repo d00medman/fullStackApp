@@ -2,6 +2,7 @@
 
 const showMoviesTemplate = require('../templates/movie-listing.handlebars')
 const addMovieTemplate = require('../templates/add-movie.handlebars')
+const movieTitle = require('../templates/movie-title.handlebars')
 
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
@@ -27,15 +28,35 @@ const destroy = (event) => {
     .then(destroySuccess(event))
     .catch(destroyFailure)
 }
-// This method is jury rigged. Still not sure how we can simply press a button and delete the target.
-// I know the problem is that I cannot return the id number linked to the item. Once I figure out how to do this, I will be able to eliminate this form based implementation
+
+const updateSuccess = (response, data) => {
+  const title = movieTitle({ movie: data.movie })
+  $(response.target).siblings('h5').text(title)
+  $('.core-alert').text('You have changed one of your favorites')
+}
+// There is an odd behavioral quirk going on in this method. For whatever reason, when you sign out, then sign in again, any items which have been patched are now at the bottom of the list.
+
+const updateFailure = (error) => {
+  $('.core-alert').text('Sorry, we were unable to change this item.')
+  // going to want to build an update alert into my handlebars html
+}
+
+const update = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  const targ = $(event.target).attr('data-id')
+  console.log(targ)
+  api.update(data, targ)
+    .then(updateSuccess(event, data))
+    .catch(updateFailure)
+}
+
 const test = (event) => {
   event.preventDefault()
-  // let data = $(event.target).parent()
-  console.log(event.target)
-  let targ = $(event.target).attr('data-id')
-  // console.log(data)
-  // console.log(targ)
+  const data = getFormFields(event.target)
+  const targ = $(event.target).attr('data-id')
+  console.log(data)
   console.log(targ)
 }
 
@@ -45,6 +66,7 @@ const createSuccess = (response) => {
   const showMoviesHtml = addMovieTemplate({ movie: response.movie })
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
+  $('.update').on('submit', update)
 }
 
 const createFailure = (error) => {
@@ -56,6 +78,7 @@ const indexSuccess = (response) => {
   const showMoviesHtml = showMoviesTemplate({ movies: response.movies })
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
+  $('.update').on('submit', update)
 }
 
 const indexFailure = (error) => {
@@ -72,19 +95,6 @@ const showSuccess = (response) => {
 const showFailure = (error) => {
   // burndown
   console.log('failed to show')
-  // burndown
-}
-
-const updateSuccess = (response) => {
-  // burndown
-  console.log(response)
-  console.log('successful update')
-  // burndown
-}
-
-const updateFailure = (error) => {
-  // burndown
-  console.log('update failed')
   // burndown
 }
 

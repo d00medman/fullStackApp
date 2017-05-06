@@ -16,7 +16,7 @@ const create = (data) => {
 
 const update = (data, targ) => {
   return $.ajax({
-    url: config.apiOrigin + '/movies/' + targ.id, // now its a 400 error
+    url: config.apiOrigin + '/movies/' + targ, // now its a 400 error
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

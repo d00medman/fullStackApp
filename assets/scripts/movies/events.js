@@ -40,20 +40,20 @@ const onShow = function (event) {
 //     .catch(ui.destroyFailure)
 // }
 
-const onUpdate = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  const targ = data.movie
-  api.update(data, targ)
-    .then(ui.updateSuccess)
-    .catch(ui.updateFailure)
-}
+// const onUpdate = function (event) {
+//   event.preventDefault()
+//   const data = getFormFields(event.target)
+//   const targ = data.movie
+//   api.update(data, targ)
+//     .then(ui.updateSuccess)
+//     .catch(ui.updateFailure)
+// }
 
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
   $('.show').on('submit', onShow)
   // $('.destroy').on('submit', onDestroy) // superflous so long as destroy buttons are being created via handlebars scripts
-  $('.update').on('submit', onUpdate)
+  // $('.update').on('submit', onUpdate)
 }
 
 module.exports = {
