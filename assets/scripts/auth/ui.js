@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const movieEvents = require('../movies/events.js')
 
 // Displays that user has signed up successfully
 const signUpSuccess = (response) => {
@@ -15,13 +16,11 @@ const signUpFailure = (error) => {
 // Hides login-info section, sets the board and footer to visible on success
 const signInSuccess = (response) => {
   store.user = response.user
-  // may be problematic -> causing some twitchy behavior with other buttons
   const login = document.querySelector('.login')
   $(login).hide()
-  // may be problematic
-  // document.querySelector('.login').style.visibility = 'hidden'
   document.querySelector('.core').style.visibility = 'visible'
   document.querySelector('.logout').style.visibility = 'visible'
+  movieEvents.getIndex()
 }
 
 // Displays users failure to sign in

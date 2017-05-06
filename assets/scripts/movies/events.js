@@ -20,6 +20,13 @@ const onIndex = function (event) {
     .catch(ui.indexFailure)
 }
 
+// bein used to test whether or not I can snap build the users movies
+const getIndex = function () {
+  api.index()
+    .then(ui.indexSuccess)
+    .catch(ui.indexFailure)
+}
+
 const onShow = function (event) {
   event.preventDefault()
   let data = getFormFields(event.target)
@@ -56,5 +63,7 @@ const addHandlers = () => {
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+
+  getIndex
 }
