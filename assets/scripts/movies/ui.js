@@ -6,29 +6,17 @@ const addMovieTemplate = require('../templates/add-movie.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
-// // Moved over from events.js, would like to see a smoother method to delete
-// // probably could just make the api call via the button. Have a way to retrieve
-// // a target for the api call.
-// const getFormFields = require(`../../../lib/get-form-fields`)
-// const api = require('./api')
-// const onDestroy = function (event) {
-//   event.preventDefault()
-//   let data = getFormFields(event.target)
-//   data = data.movie
-//   api.destroy(data.id)
-//     .then(ui.destroySuccess)
-//     .catch(ui.destroyFailure)
-// }
-
-const test = (event) => {
+// current implementation of destroy method.
+// Needs to inhabit ui file becuase I don not know how to link to the events file and make onDestroy work.
+const destroy = (event) => {
   event.preventDefault()
   let data = getFormFields(event.target)
-  console.log(data)
-  // const data = ? => Need to find this
-    // data is the ID of the movie associated with the button.
-  // api.destroy(data)
+  data = data.movie
+  api.destroy(data.id)
   $(event.target).parent().remove()
 }
+// This method is jury rigged. Still not sure how we can simply press a button and delete the target.
+// I know the problem is that I cannot return the id number linked to the item. Once I figure out how to do this, I will be able to eliminate this form based implementation
 
 const createSuccess = (response) => {
   // burndown
@@ -37,7 +25,7 @@ const createSuccess = (response) => {
   // burndown
   const showMoviesHtml = addMovieTemplate({ movie: response.movie })
   $('.content').append(showMoviesHtml)
-  $('.destroy').on('click', test)
+  $('.destroy').on('submit', destroy)
 }
 
 const createFailure = (error) => {
@@ -54,7 +42,7 @@ const indexSuccess = (response) => {
   const showMoviesHtml = showMoviesTemplate({ movies: response.movies })
   $('.content').append(showMoviesHtml)
   // callback here is probably wrong
-  $('.destroy').on('click', test)
+  $('.destroy').on('submit', destroy)
 }
 
 const indexFailure = (error) => {
