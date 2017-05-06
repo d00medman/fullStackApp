@@ -1,5 +1,7 @@
 'use strict'
 
+const showMoviesTemplate = require('../templates/movie-listing.handlebars')
+
 const createSuccess = (response) => {
   // burndown
   console.log('success')
@@ -15,10 +17,12 @@ const createFailure = (error) => {
 
 const indexSuccess = (response) => {
   // burndown
-  console.log(response)
-  const movies = response.movies
-  console.log(movies)
+  // console.log(response)
+  // const movies = response.movies
+  // console.log(movies)
   // burndown
+  let showMoviesHtml = showMoviesTemplate({ movies: response.movies })
+  $('.content').append(showMoviesHtml)
 }
 
 const indexFailure = (error) => {
