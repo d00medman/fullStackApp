@@ -4,12 +4,22 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 body{
  text-align: center;
  margin:0;
- font-family: "Times New Roman", Times, serif;
+ font-family: 'Inconsolata', monospace;
+}
+
+h1{
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 45px;
+  margin: 0;
+}
+
+h5{
+
 }
 
 .destroy{
   background-color: white;
-  // float: right;
 }
 
 .sign-up{
@@ -38,6 +48,11 @@ body{
 
 .logout-banner{
   padding-bottom: .5cm;
+}
+
+.display-info{
+  padding-top: .25cm;
+  padding-bottom: .25cm;
 }
 
 #sign-out{
