@@ -7,12 +7,6 @@ const movieTitle = require('../templates/movie-title.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
-// Both of these methods have been rendered superflous by creation of destroy method in this file. destroySuccess has a good chance of being uncommented because it is useful for its alert functionality
-
-const clearForm = () => {
-
-}
-
 const destroySuccess = (response) => {
   $('.core-alert').text('You have removed an item from your list of favorites')
   $(response.target).parent().remove()
@@ -36,6 +30,7 @@ const updateSuccess = (response, data) => {
   const title = movieTitle({ movie: data.movie })
   $(response.target).siblings('h5').text(title)
   $('.core-alert').text('You have changed one of your favorites')
+  document.getElementById('update').reset()
 }
 // There is an odd behavioral quirk going on in this method. For whatever reason, when you sign out, then sign in again, any items which have been patched are now at the bottom of the list.
 
@@ -70,6 +65,7 @@ const createSuccess = (response) => {
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
   $('.update').on('submit', update)
+  document.getElementById('create').reset()
 }
 
 const createFailure = (error) => {
