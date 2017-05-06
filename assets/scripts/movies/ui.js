@@ -3,8 +3,30 @@
 const showMoviesTemplate = require('../templates/movie-listing.handlebars')
 const addMovieTemplate = require('../templates/add-movie.handlebars')
 
+const api = require('./api')
+
+// // Moved over from events.js, would like to see a smoother method to delete
+// // probably could just make the api call via the button. Have a way to retrieve
+// // a target for the api call.
+// const getFormFields = require(`../../../lib/get-form-fields`)
+// const api = require('./api')
+// const onDestroy = function (event) {
+//   event.preventDefault()
+//   let data = getFormFields(event.target)
+//   data = data.movie
+//   api.destroy(data.id)
+//     .then(ui.destroySuccess)
+//     .catch(ui.destroyFailure)
+// }
+
 const test = (event) => {
-  console.log('Working')
+  const data = $(event.target).attr('data-id')
+  // the problem is that data-id != the id of the item its listed with
+  // need to find some way to extract its id
+  console.log(event.target)
+  // Alright, may start to be seeing the problem. event.target hits the button, needs to get the entire object.
+  // api.destroy(data)
+  $(event.target).parent().remove()
 }
 
 const createSuccess = (response) => {
@@ -14,7 +36,7 @@ const createSuccess = (response) => {
   // burndown
   const showMoviesHtml = addMovieTemplate({ movie: response.movie })
   $('.content').append(showMoviesHtml)
-  $('.tmpdestroy').on('click', test)
+  $('.destroy').on('click', test)
 }
 
 const createFailure = (error) => {
@@ -25,9 +47,13 @@ const createFailure = (error) => {
 
 // creates a handlebars manifestation of the list of favorite movies
 const indexSuccess = (response) => {
+  // burndown
+  console.log(response)
+  // burndown
   const showMoviesHtml = showMoviesTemplate({ movies: response.movies })
   $('.content').append(showMoviesHtml)
-  $('.tmpdestroy').on('click', test)
+  // callback here is probably wrong
+  $('.destroy').on('click', test)
 }
 
 const indexFailure = (error) => {
