@@ -10,8 +10,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 // Both of these methods have been rendered superflous by creation of destroy method in this file. destroySuccess has a good chance of being uncommented because it is useful for its alert functionality
 
 const destroySuccess = (response) => {
-  console.log(response)
-  $('.core-alert').text('You have removed a movie from your list of favorites')
+  $('.core-alert').text('You have removed an item from your list of favorites')
   $(response.target).parent().remove()
 }
 
@@ -61,8 +60,8 @@ const test = (event) => {
 }
 
 const createSuccess = (response) => {
-  $('.core-alert').text('You have added a movie to your list of favorites')
-  // Would like to provide more information about what movie was added.
+  const title = movieTitle({ movie: response.movie })
+  $('.core-alert').text('You have added ' + title + ' to your list of favorites')
   const showMoviesHtml = addMovieTemplate({ movie: response.movie })
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
