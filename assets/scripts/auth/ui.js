@@ -20,7 +20,7 @@ const signInSuccess = (response) => {
   $(login).hide()
   document.querySelector('.core').style.visibility = 'visible'
   document.querySelector('.logout').style.visibility = 'visible'
-  movieEvents.getIndex()
+  movieEvents.onIndex()
 }
 
 // Displays users failure to sign in

@@ -13,15 +13,8 @@ const onCreate = function (event) {
     .catch(ui.createFailure)
 }
 
-const onIndex = function (event) {
-  event.preventDefault()
-  api.index()
-    .then(ui.indexSuccess)
-    .catch(ui.indexFailure)
-}
-
 // bein used to test whether or not I can snap build the users movies
-const getIndex = function () {
+const onIndex = function () {
   api.index()
     .then(ui.indexSuccess)
     .catch(ui.indexFailure)
@@ -56,7 +49,6 @@ const onUpdate = function (event) {
 
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
-  $('.index').on('click', onIndex)
   $('.show').on('submit', onShow)
   $('.destroy').on('submit', onDestroy)
   $('.update').on('submit', onUpdate)
@@ -65,5 +57,5 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
 
-  getIndex
+  onIndex
 }

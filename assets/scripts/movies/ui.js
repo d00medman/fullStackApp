@@ -1,12 +1,15 @@
 'use strict'
 
 const showMoviesTemplate = require('../templates/movie-listing.handlebars')
+const addMovieTemplate = require('../templates/add-movie.handlebars')
 
 const createSuccess = (response) => {
   // burndown
-  console.log('success')
+  console.log('create success')
   console.log(response)
   // burndown
+  const showMoviesHtml = addMovieTemplate({ movie: response.movie })
+  $('.content').append(showMoviesHtml)
 }
 
 const createFailure = (error) => {
@@ -15,13 +18,9 @@ const createFailure = (error) => {
   // burndown
 }
 
+// creates a handlebars manifestation of the list of favorite movies
 const indexSuccess = (response) => {
-  // burndown
-  // console.log(response)
-  // const movies = response.movies
-  // console.log(movies)
-  // burndown
-  let showMoviesHtml = showMoviesTemplate({ movies: response.movies })
+  const showMoviesHtml = showMoviesTemplate({ movies: response.movies })
   $('.content').append(showMoviesHtml)
 }
 
