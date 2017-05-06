@@ -22,14 +22,22 @@ const destroyFailure = (error) => {
 // Needs to inhabit ui file becuase I don not know how to link to the events file and make onDestroy work.
 const destroy = (event) => {
   event.preventDefault()
-  let data = getFormFields(event.target)
-  data = data.movie
-  api.destroy(data.id)
+  const targ = $(event.target).attr('data-id')
+  api.destroy(targ)
     .then(destroySuccess(event))
     .catch(destroyFailure)
 }
 // This method is jury rigged. Still not sure how we can simply press a button and delete the target.
 // I know the problem is that I cannot return the id number linked to the item. Once I figure out how to do this, I will be able to eliminate this form based implementation
+const test = (event) => {
+  event.preventDefault()
+  // let data = $(event.target).parent()
+  console.log(event.target)
+  let targ = $(event.target).attr('data-id')
+  // console.log(data)
+  // console.log(targ)
+  console.log(targ)
+}
 
 const createSuccess = (response) => {
   $('.core-alert').text('You have added a movie to your list of favorites')

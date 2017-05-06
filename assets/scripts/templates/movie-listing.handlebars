@@ -4,17 +4,16 @@
     <!--This also could be the key: getting movie.id in such a position that it can be
     passed through to api.destroy-->
     <div class="display-info">
+
       <h5>
         {{movie.title}}
       </h5>
       <h6>
         id: {{movie.id}}
       </h6>
-      <form class="destroy">
+      <form class="destroy" data-id="{{movie.id}}">
         <fieldset>
-          <input type="integer" name="movie[id]" placeholder="Delete movie by ID">
-          <!--I have a theory that my for problem could be solved with an injection of {{movie.id}} into movie[id]-->
-          <input type="submit" name="submit" value="Submit ID">
+          <input type="submit" name="submit" value="Remove From Favorites">
         </fieldset>
       </form>
     </div>

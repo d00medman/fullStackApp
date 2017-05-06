@@ -1,18 +1,16 @@
-<ul data-id="{{movie.id}}">
+<div data-id="{{movie.id}}">
 
-<h5>
-  {{movie.title}}
-</h5>
+  <h5>
+    {{movie.title}}
+  </h5>
+  <h6>
+    id: {{movie.id}}
+  </h6>
+  <form class="destroy" data-id="{{movie.id}}">
+    <fieldset>
+      <input type="submit" name="submit" value="Remove From Favorites">
+    </fieldset>
+  </form>
+  </div>
 
-<h6>
-  Id: {{movie.id}}
-</h6>
-
-<form class="destroy">
-  <fieldset>
-    <input type="integer" name="movie[id]" placeholder="Delete movie by ID">
-    <input type="submit" name="submit" value="Submit ID">
-  </fieldset>
-</form>
-
-</ul>
+</div>

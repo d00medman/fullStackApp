@@ -4,3 +4,6 @@ from the other templates and replaced with for fields. Will likely end up delete
 <button data-id="{{@index}}" id="test" class="btn btn-default destroy">Remove From Favorites</button>
 
 <button data-id="{{@index}}" id="test2" class="btn btn-default destroy">Remove From Favorites</button>
+
+<input type="integer" name="movie[id]" placeholder="Delete movie by ID">
+<!--I have a theory that my for problem could be solved with an injection of {{movie.id}} into movie[id]-->
