@@ -3,6 +3,10 @@
 const showMoviesTemplate = require('../templates/movie-listing.handlebars')
 const addMovieTemplate = require('../templates/add-movie.handlebars')
 
+const test = (event) => {
+  console.log('Working')
+}
+
 const createSuccess = (response) => {
   // burndown
   console.log('create success')
@@ -10,6 +14,7 @@ const createSuccess = (response) => {
   // burndown
   const showMoviesHtml = addMovieTemplate({ movie: response.movie })
   $('.content').append(showMoviesHtml)
+  $('.tmpdestroy').on('click', test)
 }
 
 const createFailure = (error) => {
@@ -22,6 +27,7 @@ const createFailure = (error) => {
 const indexSuccess = (response) => {
   const showMoviesHtml = showMoviesTemplate({ movies: response.movies })
   $('.content').append(showMoviesHtml)
+  $('.tmpdestroy').on('click', test)
 }
 
 const indexFailure = (error) => {
