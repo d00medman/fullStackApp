@@ -6,6 +6,16 @@ const addMovieTemplate = require('../templates/add-movie.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
+// Both of these methods have been rendered superflous by creation of destroy method in this file. destroySuccess has a good chance of being uncommented because it is useful for its alert functionality
+
+const destroySuccess = (response) => {
+  $('.core-alert').text('You have removed a movie from your list of favorites')
+}
+
+const destroyFailure = (error) => {
+  $('.core-alert').text('Sorry, we were unable to remove your selected movie')
+}
+
 // current implementation of destroy method.
 // Needs to inhabit ui file becuase I don not know how to link to the events file and make onDestroy work.
 const destroy = (event) => {
@@ -13,25 +23,24 @@ const destroy = (event) => {
   let data = getFormFields(event.target)
   data = data.movie
   api.destroy(data.id)
+    .then(destroySuccess)
+    .catch(destroyFailure)
   $(event.target).parent().remove()
+  // hmm this code gets fired regardless of whether or not the delete request fires. probably needs to be moved into destroySuccess. Question is how to do this w/o fubaring code
 }
 // This method is jury rigged. Still not sure how we can simply press a button and delete the target.
 // I know the problem is that I cannot return the id number linked to the item. Once I figure out how to do this, I will be able to eliminate this form based implementation
 
 const createSuccess = (response) => {
-  // burndown
-  console.log('create success')
-  console.log(response)
-  // burndown
+  $('.core-alert').text('You have added a movie to your list of favorites')
+  // Would like to provide more information about what movie was added.
   const showMoviesHtml = addMovieTemplate({ movie: response.movie })
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
 }
 
 const createFailure = (error) => {
-  // burndown
-  console.log('failed to create')
-  // burndown
+  $('.core-alert').text('Sorry, we were unable to create your movie!')
 }
 
 // creates a handlebars manifestation of the list of favorite movies
@@ -41,7 +50,6 @@ const indexSuccess = (response) => {
   // burndown
   const showMoviesHtml = showMoviesTemplate({ movies: response.movies })
   $('.content').append(showMoviesHtml)
-  // callback here is probably wrong
   $('.destroy').on('submit', destroy)
 }
 
@@ -64,20 +72,6 @@ const showFailure = (error) => {
   // burndown
 }
 
-// const destroySuccess = (response) => {
-//   // burndown
-//   console.log('successful deletion')
-//   // burndown
-// }
-
-// Both of these methods have been rendered superflous by creation of destroy method in this file. destroySuccess has a good chance of being uncommented because it is useful for its alert functionality
-
-// const destroyFailure = (error) => {
-//   // burndown
-//   console.log('failure to delete')
-//   // burndown
-// }
-
 const updateSuccess = (response) => {
   // burndown
   console.log(response)
@@ -99,7 +93,7 @@ module.exports = {
   showSuccess,
   showFailure,
   // destroySuccess,
-  // destroyFailure,
+  // destroyFailure, // unsure of wether these should be deleted or not.
   updateSuccess,
   updateFailure
 }
