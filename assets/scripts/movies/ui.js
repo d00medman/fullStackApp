@@ -4,6 +4,7 @@ const showMoviesTemplate = require('../templates/movie-listing.handlebars')
 const addMovieTemplate = require('../templates/add-movie.handlebars')
 
 const api = require('./api')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
 // // Moved over from events.js, would like to see a smoother method to delete
 // // probably could just make the api call via the button. Have a way to retrieve
@@ -20,11 +21,11 @@ const api = require('./api')
 // }
 
 const test = (event) => {
-  const data = $(event.target).attr('data-id')
-  // the problem is that data-id != the id of the item its listed with
-  // need to find some way to extract its id
-  console.log(event.target)
-  // Alright, may start to be seeing the problem. event.target hits the button, needs to get the entire object.
+  event.preventDefault()
+  let data = getFormFields(event.target)
+  console.log(data)
+  // const data = ? => Need to find this
+    // data is the ID of the movie associated with the button.
   // api.destroy(data)
   $(event.target).parent().remove()
 }

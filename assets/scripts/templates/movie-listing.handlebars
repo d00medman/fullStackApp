@@ -1,10 +1,17 @@
 {{#each movies as |movie|}}
 
   <ul data-id="{{movie.id}}">
+
   <h5>
     {{movie.title}}
   </h5>
-  <button data-id="{{@index}}" id="test" class="btn btn-default destroy">Remove From Favorites</button>
+
+  <form class="destroy">
+    <fieldset>
+      <input type="submit" name="submit" value="Submit ID">
+    </fieldset>
+  </form>
+
   </ul>
 
 {{/each}}
