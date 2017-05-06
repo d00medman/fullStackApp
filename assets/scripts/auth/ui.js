@@ -3,9 +3,11 @@
 const store = require('../store.js')
 const movieEvents = require('../movies/events.js')
 
+
 // Displays that user has signed up successfully
 const signUpSuccess = (response) => {
   $('.loginAlert').text('You have successfully signed up')
+  document.getElementById('sign-up').reset()
 }
 
 // Displays users failure to sign up
@@ -21,6 +23,7 @@ const signInSuccess = (response) => {
   document.querySelector('.core').style.visibility = 'visible'
   document.querySelector('.logout').style.visibility = 'visible'
   movieEvents.onIndex()
+  document.getElementById('sign-in').reset()
 }
 
 // Displays users failure to sign in
@@ -30,6 +33,7 @@ const signInFailure = (error) => {
 
 // Displays that user has successfully changed password
 const changePasswordSuccess = (response) => {
+  document.getElementById('change-password').reset()
   $('.pass-change-alert').text('Password successfully changed')
 }
 

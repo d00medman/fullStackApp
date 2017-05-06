@@ -18,6 +18,11 @@ h5{
 
 }
 
+input[type=submit]{
+  border-radius: 4px;
+  background-color: #e6e6e6;
+}
+
 .destroy{
   background-color: white;
 }
@@ -55,9 +60,8 @@ h5{
   padding-bottom: .25cm;
 }
 
-.sobutton{
-  background-color: #cc0000;
-  color: #d9d9d9;
+.update{
+  padding-top: .15cm;
 }
 
 #sign-out{

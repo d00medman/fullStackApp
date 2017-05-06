@@ -9,6 +9,10 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 // Both of these methods have been rendered superflous by creation of destroy method in this file. destroySuccess has a good chance of being uncommented because it is useful for its alert functionality
 
+const clearForm = () => {
+
+}
+
 const destroySuccess = (response) => {
   $('.core-alert').text('You have removed an item from your list of favorites')
   $(response.target).parent().remove()
