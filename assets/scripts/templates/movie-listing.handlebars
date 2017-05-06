@@ -1,7 +1,8 @@
 {{#each movies as |movie|}}
 
   <div data-id="{{movie.id}}">
-
+    <!--This also could be the key: getting movie.id in such a position that it can be
+    passed through to api.destroy-->
     <div class="display-info">
       <h5>
         {{movie.title}}
@@ -12,6 +13,7 @@
       <form class="destroy">
         <fieldset>
           <input type="integer" name="movie[id]" placeholder="Delete movie by ID">
+          <!--I have a theory that my for problem could be solved with an injection of {{movie.id}} into movie[id]-->
           <input type="submit" name="submit" value="Submit ID">
         </fieldset>
       </form>
