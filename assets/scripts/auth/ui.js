@@ -47,6 +47,7 @@ const signOutSuccess = (response) => {
   document.querySelector('.login').style.visibility = 'visible'
   document.querySelector('.core').style.visibility = 'hidden'
   document.querySelector('.logout').style.visibility = 'hidden'
+  $('.content').text('')
 }
 
 // Makes fun of you if you fail to sign out

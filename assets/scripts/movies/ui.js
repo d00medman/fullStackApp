@@ -64,17 +64,19 @@ const showFailure = (error) => {
   // burndown
 }
 
-const destroySuccess = (response) => {
-  // burndown
-  console.log('successful deletion')
-  // burndown
-}
+// const destroySuccess = (response) => {
+//   // burndown
+//   console.log('successful deletion')
+//   // burndown
+// }
 
-const destroyFailure = (error) => {
-  // burndown
-  console.log('failure to delete')
-  // burndown
-}
+// Both of these methods have been rendered superflous by creation of destroy method in this file. destroySuccess has a good chance of being uncommented because it is useful for its alert functionality
+
+// const destroyFailure = (error) => {
+//   // burndown
+//   console.log('failure to delete')
+//   // burndown
+// }
 
 const updateSuccess = (response) => {
   // burndown
@@ -96,8 +98,8 @@ module.exports = {
   indexFailure,
   showSuccess,
   showFailure,
-  destroySuccess,
-  destroyFailure,
+  // destroySuccess,
+  // destroyFailure,
   updateSuccess,
   updateFailure
 }

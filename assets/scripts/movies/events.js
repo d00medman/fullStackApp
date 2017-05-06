@@ -29,14 +29,16 @@ const onShow = function (event) {
     .catch(ui.showFailure)
 }
 
-const onDestroy = function (event) {
-  event.preventDefault()
-  let data = getFormFields(event.target)
-  data = data.movie
-  api.destroy(data.id)
-    .then(ui.destroySuccess)
-    .catch(ui.destroyFailure)
-}
+// called with a button press. Because surface level destroy button has been removed and destroy buttons are being built with handlebars in the ui, this event is superflous, but not to be deleted yet.
+
+// const onDestroy = function (event) {
+//   event.preventDefault()
+//   let data = getFormFields(event.target)
+//   data = data.movie
+//   api.destroy(data.id)
+//     .then(ui.destroySuccess)
+//     .catch(ui.destroyFailure)
+// }
 
 const onUpdate = function (event) {
   event.preventDefault()
@@ -50,7 +52,7 @@ const onUpdate = function (event) {
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
   $('.show').on('submit', onShow)
-  $('.destroy').on('submit', onDestroy)
+  // $('.destroy').on('submit', onDestroy) // superflous so long as destroy buttons are being created via handlebars scripts
   $('.update').on('submit', onUpdate)
 }
 
