@@ -9,7 +9,10 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 // Both of these methods have been rendered superflous by creation of destroy method in this file. destroySuccess has a good chance of being uncommented because it is useful for its alert functionality
 
 const destroySuccess = (response) => {
+  console.log(response)
   $('.core-alert').text('You have removed a movie from your list of favorites')
+  $(response.target).parent().remove()
+  // lol no idea if this is right or not.
 }
 
 const destroyFailure = (error) => {
@@ -23,10 +26,8 @@ const destroy = (event) => {
   let data = getFormFields(event.target)
   data = data.movie
   api.destroy(data.id)
-    .then(destroySuccess)
+    .then(destroySuccess(event))
     .catch(destroyFailure)
-  $(event.target).parent().remove()
-  // hmm this code gets fired regardless of whether or not the delete request fires. probably needs to be moved into destroySuccess. Question is how to do this w/o fubaring code
 }
 // This method is jury rigged. Still not sure how we can simply press a button and delete the target.
 // I know the problem is that I cannot return the id number linked to the item. Once I figure out how to do this, I will be able to eliminate this form based implementation
@@ -45,18 +46,13 @@ const createFailure = (error) => {
 
 // creates a handlebars manifestation of the list of favorite movies
 const indexSuccess = (response) => {
-  // burndown
-  console.log(response)
-  // burndown
   const showMoviesHtml = showMoviesTemplate({ movies: response.movies })
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
 }
 
 const indexFailure = (error) => {
-  // burndown
-  console.log('failed to index')
-  // burndown
+  $('.core-alert').text('Sorry, we were unable to retrieve your favorites!')
 }
 
 const showSuccess = (response) => {
