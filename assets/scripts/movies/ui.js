@@ -27,10 +27,11 @@ const destroy = (event) => {
 }
 
 const updateSuccess = (response, data) => {
+  const targ = $(response.target).attr('data-id')
   const title = movieTitle({ movie: data.movie })
   $(response.target).siblings('h5').text(title)
   $('.core-alert').text('You have changed one of your favorites')
-  document.getElementById('update').reset()
+  document.getElementById(targ).reset()
 }
 // There is an odd behavioral quirk going on in this method. For whatever reason, when you sign out, then sign in again, any items which have been patched are now at the bottom of the list.
 
@@ -42,9 +43,7 @@ const updateFailure = (error) => {
 const update = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   const targ = $(event.target).attr('data-id')
-  console.log(targ)
   api.update(data, targ)
     .then(updateSuccess(event, data))
     .catch(updateFailure)
