@@ -5,12 +5,22 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
+// how fucking bizzarre: the exact same code in ui has the opposite output. Only way I can get the output I want is to flip the returns
+const validate = (input) => {
+  if (input === '') { return false }
+  return true
+}
+
 const onCreate = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  api.create(data)
-    .then(ui.createSuccess)
-    .catch(ui.createFailure)
+  if (validate(data.movie.title) === true) {
+    api.create(data)
+      .then(ui.createSuccess)
+      .catch(ui.createFailure)
+  } else {
+    $('.core-alert').text('Please give us a movie.')
+  }
 }
 
 // bein used to test whether or not I can snap build the users movies

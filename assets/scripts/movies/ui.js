@@ -8,8 +8,9 @@ const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 const validate = (input) => {
-  if (input === '') { return true }
-  return false
+  if (input === '') { return false }
+  // does not block strings which consist solely of spaces. Need to find workaround
+  return true
 }
 
 const destroySuccess = (response) => {
@@ -49,7 +50,7 @@ const update = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   const targ = $(event.target).attr('data-id')
-  if (validate(data) === true) {
+  if (validate(data.movie.title) === true) {
     api.update(data, targ)
       .then(updateSuccess(event, data))
       .catch(updateFailure)
@@ -104,8 +105,9 @@ module.exports = {
   indexFailure,
   showSuccess,
   showFailure,
+  validate
   // destroySuccess,
   // destroyFailure, // unsure of wether these should be deleted or not.
-  updateSuccess,
-  updateFailure
+  // updateSuccess,
+  // updateFailure
 }
