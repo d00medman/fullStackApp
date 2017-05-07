@@ -7,6 +7,11 @@ const movieTitle = require('../templates/movie-title.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
+const validate = (input) => {
+  if (input === '') { return true }
+  return false
+}
+
 const destroySuccess = (response) => {
   $('.core-alert').text('You have removed an item from your list of favorites')
   $(response.target).parent().remove()
@@ -44,17 +49,13 @@ const update = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   const targ = $(event.target).attr('data-id')
-  api.update(data, targ)
-    .then(updateSuccess(event, data))
-    .catch(updateFailure)
-}
-
-const test = (event) => {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  const targ = $(event.target).attr('data-id')
-  console.log(data)
-  console.log(targ)
+  if (validate(data) === true) {
+    api.update(data, targ)
+      .then(updateSuccess(event, data))
+      .catch(updateFailure)
+  } else {
+    $('.core-alert').text('Please input a valid update.')
+  }
 }
 
 const createSuccess = (response) => {
