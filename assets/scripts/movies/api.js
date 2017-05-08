@@ -56,7 +56,7 @@ const parseData = function (data) {
 }
 
 // sends the title to OMDB and returns information
-const getFromOMDB = function (data) {
+const omdbGet = function (data) {
   return $.ajax({
     url: 'http://www.omdbapi.com/' + '?t=' + parseData(data), // in between the url and the data, there is a string of charachters '?t='. Do i need to include this in my url call or is it added implicitly? This is also true for the plus signs between words when I input a multi-word title
     // ^ building under the above assumption
@@ -80,5 +80,5 @@ module.exports = {
   index,
   show,
   destroy,
-  getFromOMDB
+  omdbGet
 }

@@ -40,7 +40,9 @@ const onShow = function (event) {
 const onOMDB = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data.movie.title)
+  api.omdbGet(data.movie.title)
+    .then(ui.omdbGetSuccess)
+    .catch(ui.omdbGetFailure)
 }
 
 // called with a button press. Because surface level destroy button has been removed and destroy buttons are being built with handlebars in the ui, this event is superflous, but not to be deleted yet.

@@ -88,6 +88,15 @@ const showSuccess = (response) => {}
 
 const showFailure = (error) => {}
 
+const omdbGetSuccess = (response) => {
+  console.log(response)
+  console.log('omdb get success')
+}
+
+const omdbGetFailure = (error) => {
+  console.log('omdb get failure')
+}
+
 module.exports = {
   createSuccess,
   createFailure,
@@ -95,7 +104,9 @@ module.exports = {
   indexFailure,
   showSuccess,
   showFailure,
-  validate
+  validate,
+  omdbGetSuccess,
+  omdbGetFailure
   // destroySuccess,
   // destroyFailure, // unsure of wether these should be deleted or not.
   // updateSuccess,
