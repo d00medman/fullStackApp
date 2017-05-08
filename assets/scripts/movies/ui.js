@@ -10,10 +10,6 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const omdbGetSuccess = (response) => {
   const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
-  console.log(output)
-  const data = $(response.target).attr('data-id')
-  console.log(data)
-  $('#data').html(output)
   $('.omdb-output').html(output)
 }
 

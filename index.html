@@ -39,18 +39,8 @@
 
       <div class="core">
         <h3>These are a few of my favorite movies</h3>
-        <!--This is where I will build out the core functionality of the application-->
-        <!--At its simplest, the app will be an unordered list of movie names based-->
-        <!--on the order in which the user has input them. At the bottom of the list-->
-        <!--Will be a form submission which communicates with the API, creating a new-->
-        <!--Movie in the user. Using handlebars, the list will be appended upon the click-->
-        <!--of the form submission. Next to each item, there will be a working remove button-->
-        <!--which deletes the item from the list.-->
 
-        <!--Thinking realistically, the largest block of functionality will exist in the event-->
-        <!--triggered by clicking the add movie button. I will also need to consider how the removal-->
-        <!--functionality works. This concerns me less, as I have a solid example in the solution branch-->
-        <!--of the handlebars lesson.-->
+        <div class="omdb-output"></div>
 
         <div id="display" class="content"></div>
 
@@ -71,14 +61,12 @@
           </fieldset>
         </form>
 
-        <form class="omdb">
+        <!-- <form class="omdb">
           <fieldset>
             <input type="text" name="movie[title]" placeholder="Check OMDB">
             <input type="submit" name="submit" value="Send Movie">
           </fieldset>
-        </form>
-
-        <div class="omdb-output"></div>
+        </form> -->
 
       </div>
 
