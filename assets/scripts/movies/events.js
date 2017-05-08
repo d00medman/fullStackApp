@@ -7,7 +7,10 @@ const ui = require('./ui')
 
 // how fucking bizzarre: the exact same code in ui has the opposite output. Only way I can get the output I want is to flip the returns
 const validate = (input) => {
-  if (input === '') { return false }
+  // if (input === '') {
+  //   return false
+  // }
+  if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
   return true
 }
 
