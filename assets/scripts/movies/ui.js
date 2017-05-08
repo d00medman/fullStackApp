@@ -3,6 +3,7 @@
 const showMoviesTemplate = require('../templates/movie-listing.handlebars')
 const addMovieTemplate = require('../templates/add-movie.handlebars')
 const movieTitle = require('../templates/movie-title.handlebars')
+const omdbOutput = require('../templates/omdb-output.handlebars')
 
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
@@ -89,6 +90,8 @@ const showSuccess = (response) => {}
 const showFailure = (error) => {}
 
 const omdbGetSuccess = (response) => {
+  const output = omdbOutput({ movie: response.movie }) // This could fail => could be passing the wrong data through to handlebars
+  $('.omdb-test').text(output)
   console.log(response)
   console.log('omdb get success')
 }
