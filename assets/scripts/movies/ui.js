@@ -13,7 +13,7 @@ const omdbSuccess = (response) => {
   const data = document.getElementById(response.Title)
   const output = omdbOutput({ movie: response })
   $(data).html(output)
-  $('.omdb-output').html(output)
+  // $('.omdb-output').html(output)
 }
 
 const omdbFailure = (error) => {
