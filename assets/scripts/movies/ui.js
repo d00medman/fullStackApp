@@ -90,10 +90,8 @@ const showSuccess = (response) => {}
 const showFailure = (error) => {}
 
 const omdbGetSuccess = (response) => {
-  const output = omdbOutput({ movie: response.movie }) // This could fail => could be passing the wrong data through to handlebars
-  $('.omdb-test').text(output)
-  console.log(response)
-  console.log('omdb get success')
+  const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
+  $('.omdb-test').html(output)
 }
 
 const omdbGetFailure = (error) => {
