@@ -8,8 +8,7 @@ const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 const validate = (input) => {
-  if (input === '') { return false }
-  // does not block strings which consist solely of spaces. Need to find workaround
+  if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
   return true
 }
 
@@ -42,7 +41,7 @@ const updateSuccess = (response, data) => {
 // There is an odd behavioral quirk going on in this method. For whatever reason, when you sign out, then sign in again, any items which have been patched are now at the bottom of the list.
 
 const updateFailure = (error) => {
-  $('.core-alert').text('Sorry, we were unable to change this item.')
+  $('.core-alert').text('What should we change this item to?')
   // going to want to build an update alert into my handlebars html
 }
 
@@ -53,9 +52,9 @@ const update = (event) => {
   if (validate(data.movie.title) === true) {
     api.update(data, targ)
       .then(updateSuccess(event, data))
-      .catch(updateFailure)
+      .catch(updateFailure())
   } else {
-    $('.core-alert').text('Please input a valid update.')
+    updateFailure()
   }
 }
 
@@ -70,7 +69,7 @@ const createSuccess = (response) => {
 }
 
 const createFailure = (error) => {
-  $('.core-alert').text('Sorry, we were unable to create your movie!')
+  $('.core-alert').text('Please give us a movie to create!')
 }
 
 // creates a handlebars manifestation of the list of favorite movies
@@ -85,18 +84,9 @@ const indexFailure = (error) => {
   $('.core-alert').text('Sorry, we were unable to retrieve your favorites!')
 }
 
-const showSuccess = (response) => {
-  // burndown
-  console.log('success')
-  console.log(response)
-  // burndown
-}
+const showSuccess = (response) => {}
 
-const showFailure = (error) => {
-  // burndown
-  console.log('failed to show')
-  // burndown
-}
+const showFailure = (error) => {}
 
 module.exports = {
   createSuccess,
