@@ -8,12 +8,12 @@ const omdbOutput = require('../templates/omdb-output.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
-const omdbGetSuccess = (response) => {
+const omdbSuccess = (response) => {
   const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
   $('.omdb-output').html(output)
 }
 
-const omdbGetFailure = (error) => {
+const omdbFailure = (error) => {
   console.log('omdb get failure')
 }
 
@@ -21,8 +21,8 @@ const onOMDB = function (event) {
   event.preventDefault()
   const data = $(event.target).attr('data-id')
   api.omdbGet(data)
-    .then(omdbGetSuccess)
-    .catch(omdbGetFailure)
+    .then(omdbSuccess)
+    .catch(omdbFailure)
 }
 
 const validate = (input) => {
@@ -116,8 +116,8 @@ module.exports = {
   showSuccess,
   showFailure,
   validate,
-  omdbGetSuccess,
-  omdbGetFailure
+  omdbSuccess,
+  omdbFailure
   // destroySuccess,
   // destroyFailure, // unsure of wether these should be deleted or not.
   // updateSuccess,
