@@ -8,7 +8,7 @@ const omdbOutput = require('../templates/omdb-output.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
-// works conditionally
+// works conditionally, with the condition being that the name is EXACTLY correct
 const omdbSuccess = (response) => {
   const data = document.getElementById(response.Title)
   const output = omdbOutput({ movie: response })

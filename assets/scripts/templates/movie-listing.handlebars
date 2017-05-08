@@ -9,9 +9,9 @@
         {{movie.title}}
       </h5>
       <div id="{{movie.title}}" data-id="{{movie.title}}"></div>
-      <form class="destroy" data-id="{{movie.id}}">
+      <form class ="omdb" data-id="{{movie.title}}">
         <fieldset>
-          <input type="submit" name="submit" value="Remove From Favorites">
+          <input type="submit" name="submit" value="Get Info">
         </fieldset>
       </form>
       <form class="update" id="{{movie.id}}" data-id="{{movie.id}}">
@@ -20,9 +20,9 @@
           <input type="submit" name="submit" value="Update Movie">
         </fieldset>
       </form>
-      <form class ="omdb" data-id="{{movie.title}}">
+      <form class="destroy" data-id="{{movie.id}}">
         <fieldset>
-          <input type="submit" name="submit" value="Get Info">
+          <input type="submit" name="submit" value="Remove From Favorites">
         </fieldset>
       </form>
 
