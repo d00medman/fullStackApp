@@ -8,6 +8,23 @@ const omdbOutput = require('../templates/omdb-output.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
+const omdbGetSuccess = (response) => {
+  const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
+  $('.omdb-output').html(output)
+}
+
+const omdbGetFailure = (error) => {
+  console.log('omdb get failure')
+}
+
+const onOMDB = function (event) {
+  event.preventDefault()
+  const data = $(event.target).attr('data-id')
+  api.omdbGet(data)
+    .then(omdbGetSuccess)
+    .catch(omdbGetFailure)
+}
+
 const validate = (input) => {
   if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
   return true
@@ -66,6 +83,7 @@ const createSuccess = (response) => {
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
   $('.update').on('submit', update)
+  $('.omdb').on('submit', onOMDB)
   document.getElementById('create').reset()
 }
 
@@ -79,6 +97,7 @@ const indexSuccess = (response) => {
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
   $('.update').on('submit', update)
+  $('.omdb').on('submit', onOMDB)
 }
 
 const indexFailure = (error) => {
@@ -88,15 +107,6 @@ const indexFailure = (error) => {
 const showSuccess = (response) => {}
 
 const showFailure = (error) => {}
-
-const omdbGetSuccess = (response) => {
-  const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
-  $('.omdb-test').html(output)
-}
-
-const omdbGetFailure = (error) => {
-  console.log('omdb get failure')
-}
 
 module.exports = {
   createSuccess,

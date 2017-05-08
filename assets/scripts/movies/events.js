@@ -37,6 +37,7 @@ const onShow = function (event) {
     .catch(ui.showFailure)
 }
 
+// moved into ui
 const onOMDB = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
