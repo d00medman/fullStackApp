@@ -8,8 +8,21 @@ const omdbOutput = require('../templates/omdb-output.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
-const omdbSuccess = (response) => {
-  const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
+const omdbTarget = (event) => {
+
+}
+
+const omdbSuccess = (response, event) => {
+  console.log('Response: ' + response) // response.title should be equivalent to the data id of the div I am trying to inject the html into.
+  // Actually, not necessarily. this data-id is whatever was input upon creation. setting it all to lower case could do the trick (or setting both to upcase)
+  console.log('Event: ' + event)
+
+  const data = $(response.target).attr('data-id')
+  console.log(data)
+  $('#' + response.Title).html(output)
+
+  // The only part of this godforsaken method that works
+  const output = omdbOutput({ movie: response })
   $('.omdb-output').html(output)
 }
 
@@ -20,9 +33,11 @@ const omdbFailure = (error) => {
 const onOMDB = function (event) {
   event.preventDefault()
   const data = $(event.target).attr('data-id')
-  api.omdbGet(data)
-    .then(omdbSuccess)
-    .catch(omdbFailure)
+  omdbSuccess(api.omdbGet(data), event)
+
+  // api.omdbGet(data)
+  //   .then(omdbSuccess)
+  //   .catch(omdbFailure)
 }
 
 const validate = (input) => {
@@ -54,9 +69,8 @@ const updateSuccess = (response, data) => {
   const title = movieTitle({ movie: data.movie })
   $(response.target).siblings('h5').text(title)
   $('.core-alert').text('You have changed one of your favorites')
-  document.getElementById(targ).reset()
+  document.getElementById(targ).reset() // the target of the omdb output method is fucking it up
 }
-// There is an odd behavioral quirk going on in this method. For whatever reason, when you sign out, then sign in again, any items which have been patched are now at the bottom of the list.
 
 const updateFailure = (error) => {
   $('.core-alert').text('What should we change this item to?')
