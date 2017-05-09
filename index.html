@@ -15,7 +15,7 @@
     <body class="container-fluid">
       <header>
         <h1>Lights, Camera, Action!</h1>
-        <h4 class="subhead">Helping you brag about your taste in cinema to strangers on the internet</h4>
+        <h4 class="subhead">Helping You Brag About Your Taste in Cinema to Strangers on the Internet</h4>
       </header>
 
       <div class="login">
@@ -26,7 +26,7 @@
             <input type="text" name="credentials[email]" placeholder="email">
             <input type="password" name="credentials[password]" placeholder="password">
             <input type="password" name="credentials[password_confirmation]" placeholder="password confirmation">
-            <input type="submit" name="submit" value="Sign up!">
+            <input type="submit" name="submit" value="Sign up">
           </fieldset>
         </form>
         <form id ="sign-in">
@@ -34,19 +34,21 @@
             <legend>Sign in</legend>
             <input type="text" name="credentials[email]" placeholder="email">
             <input type="password" name="credentials[password]" placeholder="password">
-            <input type="submit" name="submit" value="Sign in!">
+            <input type="submit" name="submit" value="Sign in">
           </fieldset>
         </form>
       </div>
 
       <div class="core">
-        <h3 class="core-headline">Find your favorite movies</h3>
+        <h3 class="core-headline">Find your Favorite Movies</h3>
+        <h5 class="core-alert"></h5>
 
         <div class="omdb-section">
+          <h4>Search the OMDB</h4>
           <form class="omdb" id="omdb">
             <fieldset>
-              <input type="text" name="movie[title]" placeholder="Check OMDB">
-              <input type="submit" name="submit" value="Get Movie">
+              <input type="text" name="movie[title]" placeholder="Favorite Movie">
+              <input type="submit" name="submit" value="Search">
             </fieldset>
           </form>
 
@@ -55,10 +57,8 @@
 
         <div class="list-section">
 
-          <h5 class="core-alert"></h5>
-
           <form class="create" id="create">
-            <h4>Add a New movie to your favoites</h4>
+            <h4>Add a New Movie to Your Favoites</h4>
             <fieldset>
               <input type="text" name="movie[title]" placeholder="Favorite Movie">
               <input type="submit" name="submit" value="Add to favorites!">
@@ -76,13 +76,6 @@
 
         <button class="toggle">Show Your Favorite Movies</button>
 
-        <!-- <form class = "toggle">
-          <fieldset>
-            <input type="submit" name="submit" value="Toggle">
-            <h5 class="toggle-notification">Show your favorite movies</h5>
-          </fieldset>
-        </form> -->
-
       </div>
       <footer>
         <div class="logout">
@@ -94,11 +87,11 @@
               <h5>Change Password</h5>
               <input type="password" name="passwords[old]" placeholder="Old password">
               <input type="password" name="passwords[new]" placeholder="new password">
-              <input type="submit" name="submit" value="Change Password!">
+              <input type="submit" name="submit" value="Change Password">
             </fieldset>
           </form>
           <form id ="sign-out">
-            <input class="sobutton" type="submit" name="submit" value="Sign Out.">
+            <input class="sobutton" type="submit" name="submit" value="Sign Out">
           </form>
         </div>
       </footer>

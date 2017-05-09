@@ -19,12 +19,15 @@ const toggle = () => {
     $('.toggle').text('Search for Movies')
     $('.core-headline').text('These are a few of my favorite movies')
     omdboOn = false
+    $('.omdb-output').text('')
+    $('.core-alert').text('')
   } else {
     $(omdb).show()
     $(list).hide()
     $('.toggle').text('Show your Favorite Movies')
     $('.core-headline').text('Find your favorite movies')
     omdboOn = true
+    $('.core-alert').text('')
   }
 }
 
@@ -114,13 +117,13 @@ const omdbGetSuccess = (response) => {
     const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
     $('.omdb-output').html(output)
   } else {
-    $('.omdb-output').html('No results found at the OMDB, please try again')
+    $('.core-alert').html('No results found at the OMDB, please try again')
   }
   document.getElementById('omdb').reset()
 }
 
 const omdbGetFailure = (error) => {
-  $('.omdb-output').html('Could not access the OMDB, please try again.')
+  $('.core-alert').html('Could not access the OMDB, please try again.')
 }
 
 module.exports = {
