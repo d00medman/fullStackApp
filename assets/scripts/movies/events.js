@@ -13,7 +13,7 @@ const validate = (input) => {
 const onCreate = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  if (validate(data.movie.title) === true) {
+  if (ui.validate(data.movie.title) === true) {
     api.create(data)
       .then(ui.createSuccess)
       .catch(ui.createFailure)
@@ -42,9 +42,13 @@ const onOMDB = function (event) {
   // the former is literally above. The latter can be found on the quarantine branch
   event.preventDefault()
   const data = getFormFields(this)
-  api.omdbGet(data.movie.title)
-    .then(ui.omdbGetSuccess)
-    .catch(ui.omdbGetFailure)
+  if (ui.validate(data.movie.title) === true) {
+    api.omdbGet(data.movie.title)
+      .then(ui.omdbGetSuccess)
+      .catch(ui.omdbGetFailure)
+  } else {
+    ui.omdbGetFailure()
+  }
 }
 
 // called with a button press. Because surface level destroy button has been removed and destroy buttons are being built with handlebars in the ui, this event is superflous, but not to be deleted yet.
