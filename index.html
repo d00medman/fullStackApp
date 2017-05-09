@@ -13,8 +13,10 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Lights, Camera, Action!</h1>
-      <h4 class="subhead">Helping you brag about your taste in cinema to strangers on the internet</h4>
+      <header>
+        <h1>Lights, Camera, Action!</h1>
+        <h4 class="subhead">Helping you brag about your taste in cinema to strangers on the internet</h4>
+      </header>
 
       <div class="login">
         <h3 class="loginAlert">Please log in</h3>
@@ -38,6 +40,17 @@
       </div>
 
       <div class="core">
+
+        <form class="omdb" id="omdb">
+          <h3>Find your favorite movies with the Open Movie Database</h3>
+          <fieldset>
+            <input type="text" name="movie[title]" placeholder="Check OMDB">
+            <input type="submit" name="submit" value="Get Movie">
+          </fieldset>
+        </form>
+
+        <div class="omdb-output"></div>
+
         <h3>These are a few of my favorite movies</h3>
 
         <div id="display" class="content"></div>
@@ -52,23 +65,12 @@
           </fieldset>
         </form>
 
-        <form class="show">
+        <!-- <form class="show">
           <fieldset>
             <input type="integer" name="movie[id]" placeholder="Find movie by ID">
             <input type="submit" name="submit" value="Submit ID">
           </fieldset>
-        </form>
-
-        <form class="omdb" id="omdb">
-          <h5>Find info about a movie on the Open Movie Database</h5>
-          <fieldset>
-            <input type="text" name="movie[title]" placeholder="Check OMDB">
-            <input type="submit" name="submit" value="Get Movie">
-          </fieldset>
-        </form>
-
-
-        <div class="omdb-output"></div>
+        </form> -->
 
       </div>
 

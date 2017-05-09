@@ -23,14 +23,14 @@ const onIndex = function () {
     .catch(ui.indexFailure)
 }
 
-const onShow = function (event) {
-  event.preventDefault()
-  let data = getFormFields(event.target)
-  data = data.movie
-  api.show(data.id)
-    .then(ui.showSuccess)
-    .catch(ui.showFailure)
-}
+// const onShow = function (event) {
+//   event.preventDefault()
+//   let data = getFormFields(event.target)
+//   data = data.movie
+//   api.show(data.id)
+//     .then(ui.showSuccess)
+//     .catch(ui.showFailure)
+// }
 
 const onOMDB = function (event) {
   // needs to throw a message when given an invalid return
@@ -67,7 +67,7 @@ const onOMDB = function (event) {
 
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
-  $('.show').on('submit', onShow)
+  // $('.show').on('submit', onShow)
   $('.omdb').on('submit', onOMDB)
   // $('.destroy').on('submit', onDestroy) // superflous so long as destroy buttons are being created via handlebars scripts
   // $('.update').on('submit', onUpdate)

@@ -83,13 +83,17 @@ const indexFailure = (error) => {
   $('.core-alert').text('Sorry, we were unable to retrieve your favorites!')
 }
 
-const showSuccess = (response) => {}
-
-const showFailure = (error) => {}
+// const showSuccess = (response) => {}
+//
+// const showFailure = (error) => {}
 
 const omdbGetSuccess = (response) => {
-  const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
-  $('.omdb-output').html(output)
+  if (response.Response !== 'False') {
+    const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
+    $('.omdb-output').html(output)
+  } else {
+    $('.omdb-output').html('No results found at the OMDB, please try again')
+  }
   document.getElementById('omdb').reset()
 }
 
@@ -102,8 +106,8 @@ module.exports = {
   createFailure,
   indexSuccess,
   indexFailure,
-  showSuccess,
-  showFailure,
+  // showSuccess,
+  // showFailure,
   validate,
   omdbGetSuccess,
   omdbGetFailure
