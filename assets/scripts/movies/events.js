@@ -38,6 +38,8 @@ const onShow = function (event) {
 }
 
 const onOMDB = function (event) {
+  // needs validation, needs to throw a message when an invalid object is returned
+  // the former is literally above. The latter can be found on the quarantine branch
   event.preventDefault()
   const data = getFormFields(this)
   api.omdbGet(data.movie.title)

@@ -91,11 +91,11 @@ const showFailure = (error) => {}
 
 const omdbGetSuccess = (response) => {
   const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
-  $('.omdb-test').html(output)
+  $('.omdb-output').html(output)
 }
 
 const omdbGetFailure = (error) => {
-  console.log('omdb get failure')
+  $('.omdb-output').html('Could not access the OMDB, please try again.')
 }
 
 module.exports = {
