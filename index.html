@@ -41,34 +41,46 @@
 
       <div class="core">
 
-        <form class="omdb" id="omdb">
-          <h3>Find your favorite movies</h3>
+        <div class="omdb-section">
+          <form class="omdb" id="omdb">
+            <h3>Find your favorite movies</h3>
+            <fieldset>
+              <input type="text" name="movie[title]" placeholder="Check OMDB">
+              <input type="submit" name="submit" value="Get Movie">
+            </fieldset>
+          </form>
+
+          <div class="omdb-output"></div>
+        </div>
+
+        <div class="list-section">
+          <h3>These are a few of my favorite movies</h3>
+
+          <h5 class="core-alert"></h5>
+
+          <form class="create" id="create">
+            <h4>Add a New movie to your favoites</h4>
+            <fieldset>
+              <input type="text" name="movie[title]" placeholder="Favorite Movie">
+              <input type="submit" name="submit" value="Add to favorites!">
+            </fieldset>
+          </form>
+
+          <div id="display" class="content"></div>
+          <!-- <form class="show">
+            <fieldset>
+              <input type="integer" name="movie[id]" placeholder="Find movie by ID">
+              <input type="submit" name="submit" value="Submit ID">
+            </fieldset>
+          </form> -->
+        </div>
+
+        <button class="toggle">Show Your Favorite Movies</button>
+
+        <!-- <form class = "toggle">
           <fieldset>
-            <input type="text" name="movie[title]" placeholder="Check OMDB">
-            <input type="submit" name="submit" value="Get Movie">
-          </fieldset>
-        </form>
-
-        <div class="omdb-output"></div>
-
-        <h3>These are a few of my favorite movies</h3>
-
-        <div id="display" class="content"></div>
-
-        <h5 class="core-alert"></h5>
-
-        <form class="create" id="create">
-          <h5>Add a New movie to your favoites</h5>
-          <fieldset>
-            <input type="text" name="movie[title]" placeholder="Favorite Movie">
-            <input type="submit" name="submit" value="Add to favorites!">
-          </fieldset>
-        </form>
-
-        <!-- <form class="show">
-          <fieldset>
-            <input type="integer" name="movie[id]" placeholder="Find movie by ID">
-            <input type="submit" name="submit" value="Submit ID">
+            <input type="submit" name="submit" value="Toggle">
+            <h5 class="toggle-notification">Show your favorite movies</h5>
           </fieldset>
         </form> -->
 

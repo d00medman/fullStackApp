@@ -24,6 +24,7 @@ const signInSuccess = (response) => {
   document.querySelector('.logout').style.visibility = 'visible'
   movieEvents.onIndex()
   document.getElementById('sign-in').reset()
+  // this fails to hide the list section
 }
 
 // Displays users failure to sign in

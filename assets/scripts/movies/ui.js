@@ -8,6 +8,25 @@ const omdbOutput = require('../templates/omdb-output.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
+let omdboOn = true
+
+const toggle = () => {
+  const omdb = document.querySelector('.omdb-section')
+  const list = document.querySelector('.list-section')
+  console.log(list)
+  if (omdboOn === true) {
+    $(omdb).hide()
+    $(list).show()
+    $('.toggle').text('Search for Movies') // Want to eliminate this
+    omdboOn = false
+  } else {
+    $(omdb).show()
+    $(list).hide()
+    $('.toggle').text('Show your Favorite Movies')
+    omdboOn = true
+  }
+}
+
 const validate = (input) => {
   if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
   return true
@@ -77,6 +96,8 @@ const indexSuccess = (response) => {
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
   $('.update').on('submit', update)
+  const list = document.querySelector('.list-section')
+  $(list).hide()
 }
 
 const indexFailure = (error) => {
@@ -110,7 +131,8 @@ module.exports = {
   // showFailure,
   validate,
   omdbGetSuccess,
-  omdbGetFailure
+  omdbGetFailure,
+  toggle
   // destroySuccess,
   // destroyFailure, // unsure of wether these should be deleted or not.
   // updateSuccess,

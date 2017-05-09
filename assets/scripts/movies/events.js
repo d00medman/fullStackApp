@@ -45,6 +45,11 @@ const onOMDB = function (event) {
   }
 }
 
+const onToggle = function (event) {
+  event.preventDefault()
+  ui.toggle()
+}
+
 // called with a button press. Because surface level destroy button has been removed and destroy buttons are being built with handlebars in the ui, this event is superflous, but not to be deleted yet.
 
 // const onDestroy = function (event) {
@@ -67,8 +72,9 @@ const onOMDB = function (event) {
 
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
-  // $('.show').on('submit', onShow)
   $('.omdb').on('submit', onOMDB)
+  $('.toggle').on('click', onToggle)
+  // $('.show').on('submit', onShow)
   // $('.destroy').on('submit', onDestroy) // superflous so long as destroy buttons are being created via handlebars scripts
   // $('.update').on('submit', onUpdate)
 }

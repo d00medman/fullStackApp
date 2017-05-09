@@ -27,6 +27,14 @@ input[type=submit]:hover{
   background-color: #808080;
 }
 
+.toggle{
+  background-color: #e6e6e6;
+}
+
+.toggle:hover{
+  background-color: #808080;
+}
+
 .destroy{
   background-color: white;
 }
@@ -44,7 +52,7 @@ input[type=submit]:hover{
 }
 
 .core-alert{
-  padding-top: .5cm;
+  padding-top: .15cm;
 }
 
 .create{
@@ -66,6 +74,7 @@ input[type=submit]:hover{
 
 .omdb{
   padding-top: .25cm;
+  padding-bottom: .25cm;
 }
 
 #sign-out{
