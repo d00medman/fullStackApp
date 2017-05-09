@@ -5,11 +5,6 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
-const validate = (input) => {
-  if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
-  return true
-}
-
 const onCreate = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -38,8 +33,7 @@ const onShow = function (event) {
 }
 
 const onOMDB = function (event) {
-  // needs validation, needs to throw a message when an invalid object is returned
-  // the former is literally above. The latter can be found on the quarantine branch
+  // needs to throw a message when given an invalid return
   event.preventDefault()
   const data = getFormFields(this)
   if (ui.validate(data.movie.title) === true) {

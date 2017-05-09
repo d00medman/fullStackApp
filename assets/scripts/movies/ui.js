@@ -92,6 +92,7 @@ const showFailure = (error) => {}
 const omdbGetSuccess = (response) => {
   const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
   $('.omdb-output').html(output)
+  document.getElementById('omdb').reset()
 }
 
 const omdbGetFailure = (error) => {
