@@ -37,14 +37,13 @@ const onShow = function (event) {
     .catch(ui.showFailure)
 }
 
-// moved into ui
-// const onOMDB = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(this)
-//   api.omdbGet(data.movie.title)
-//     .then(ui.omdbGetSuccess)
-//     .catch(ui.omdbGetFailure)
-// }
+const onOMDB = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.omdbGet(data.movie.title)
+    .then(ui.omdbGetSuccess)
+    .catch(ui.omdbGetFailure)
+}
 
 // called with a button press. Because surface level destroy button has been removed and destroy buttons are being built with handlebars in the ui, this event is superflous, but not to be deleted yet.
 
@@ -69,7 +68,7 @@ const onShow = function (event) {
 const addHandlers = () => {
   $('.create').on('submit', onCreate)
   $('.show').on('submit', onShow)
-  // $('.omdb').on('submit', onOMDB)
+  $('.omdb').on('submit', onOMDB)
   // $('.destroy').on('submit', onDestroy) // superflous so long as destroy buttons are being created via handlebars scripts
   // $('.update').on('submit', onUpdate)
 }

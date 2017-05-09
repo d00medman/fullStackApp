@@ -8,27 +8,6 @@ const omdbOutput = require('../templates/omdb-output.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
-// works conditionally, with the condition being that the name is EXACTLY correct
-const omdbSuccess = (response) => {
-  const data = document.getElementById(response.Title)
-  const output = omdbOutput({ movie: response })
-  $(data).html(output)
-  // $('.omdb-output').html(output)
-}
-
-const omdbFailure = (error) => {
-  console.log('omdb get failure')
-}
-
-const onOMDB = function (event) {
-  event.preventDefault()
-  const data = $(event.target).attr('data-id')
-  console.log(data)
-  api.omdbGet(data)
-    .then(omdbSuccess)
-    .catch(omdbFailure)
-}
-
 const validate = (input) => {
   if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
   return true
@@ -58,8 +37,9 @@ const updateSuccess = (response, data) => {
   const title = movieTitle({ movie: data.movie })
   $(response.target).siblings('h5').text(title)
   $('.core-alert').text('You have changed one of your favorites')
-  document.getElementById(targ).reset() // back to being a problem
+  document.getElementById(targ).reset()
 }
+// There is an odd behavioral quirk going on in this method. For whatever reason, when you sign out, then sign in again, any items which have been patched are now at the bottom of the list.
 
 const updateFailure = (error) => {
   $('.core-alert').text('What should we change this item to?')
@@ -86,7 +66,6 @@ const createSuccess = (response) => {
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
   $('.update').on('submit', update)
-  $('.omdb').on('submit', onOMDB)
   document.getElementById('create').reset()
 }
 
@@ -100,7 +79,6 @@ const indexSuccess = (response) => {
   $('.content').append(showMoviesHtml)
   $('.destroy').on('submit', destroy)
   $('.update').on('submit', update)
-  $('.omdb').on('submit', onOMDB)
 }
 
 const indexFailure = (error) => {
@@ -111,6 +89,15 @@ const showSuccess = (response) => {}
 
 const showFailure = (error) => {}
 
+const omdbGetSuccess = (response) => {
+  const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
+  $('.omdb-test').html(output)
+}
+
+const omdbGetFailure = (error) => {
+  console.log('omdb get failure')
+}
+
 module.exports = {
   createSuccess,
   createFailure,
@@ -119,8 +106,8 @@ module.exports = {
   showSuccess,
   showFailure,
   validate,
-  omdbSuccess,
-  omdbFailure
+  omdbGetSuccess,
+  omdbGetFailure
   // destroySuccess,
   // destroyFailure, // unsure of wether these should be deleted or not.
   // updateSuccess,
