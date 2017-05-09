@@ -2,6 +2,7 @@
 
 const store = require('../store.js')
 const movieEvents = require('../movies/events.js')
+const movieUi = require('../movies/ui.js')
 
 // Displays that user has signed up successfully
 const signUpSuccess = (response) => {
@@ -23,7 +24,6 @@ const signInSuccess = (response) => {
   document.querySelector('.logout').style.visibility = 'visible'
   movieEvents.onIndex()
   document.getElementById('sign-in').reset()
-  // this fails to hide the list section
 }
 
 // Displays users failure to sign in
@@ -53,6 +53,9 @@ const signOutSuccess = (response) => {
   document.querySelector('.logout').style.visibility = 'hidden'
   $('.content').text('')
   $('.core-alert').text('')
+  if (movieUi.omdbStatus() === false) {
+    movieUi.toggle()
+  }
 }
 
 // Makes fun of you if you fail to sign out

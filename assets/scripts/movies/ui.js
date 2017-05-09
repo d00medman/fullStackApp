@@ -10,6 +10,11 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 let omdboOn = true
 
+const omdbStatus = () => {
+  const status = omdboOn
+  return status
+}
+
 const toggle = () => {
   const omdb = document.querySelector('.omdb-section')
   const list = document.querySelector('.list-section')
@@ -136,7 +141,8 @@ module.exports = {
   validate,
   omdbGetSuccess,
   omdbGetFailure,
-  toggle
+  toggle,
+  omdbStatus
   // destroySuccess,
   // destroyFailure, // unsure of wether these should be deleted or not.
   // updateSuccess,
