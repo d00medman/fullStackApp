@@ -14,10 +14,6 @@ h1{
   margin: 0;
 }
 
-h5{
-
-}
-
 input[type=submit]{
   border-radius: 4px;
   background-color: #e6e6e6;
@@ -26,6 +22,11 @@ input[type=submit]{
 input[type=submit]:hover{
   background-color: #808080;
 }
+
+// footer{
+//   padding-top: .75cm;
+// background-color: #e0e0d1;
+// }
 
 .toggle{
   background-color: #e6e6e6;
@@ -48,6 +49,7 @@ input[type=submit]:hover{
 }
 
 .logout{
+  padding-top: .75cm;
   visibility: hidden;
 }
 
@@ -60,7 +62,7 @@ input[type=submit]:hover{
 }
 
 .logout-banner{
-  padding-bottom: .5cm;
+  padding-bottom: .05cm;
 }
 
 .display-info{
@@ -79,6 +81,10 @@ input[type=submit]:hover{
 
 #sign-out{
   padding-top: .25cm;
+}
+
+#sign-out[type=submit]:hover{
+  background-color: #660000;
 }
 
 #sign-in{

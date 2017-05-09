@@ -13,16 +13,17 @@ let omdboOn = true
 const toggle = () => {
   const omdb = document.querySelector('.omdb-section')
   const list = document.querySelector('.list-section')
-  console.log(list)
   if (omdboOn === true) {
     $(omdb).hide()
     $(list).show()
-    $('.toggle').text('Search for Movies') // Want to eliminate this
+    $('.toggle').text('Search for Movies')
+    $('.core-headline').text('These are a few of my favorite movies')
     omdboOn = false
   } else {
     $(omdb).show()
     $(list).hide()
     $('.toggle').text('Show your Favorite Movies')
+    $('.core-headline').text('Find your favorite movies')
     omdboOn = true
   }
 }
