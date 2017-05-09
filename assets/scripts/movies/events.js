@@ -5,6 +5,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 
+// Fires on creation of a new Movie
 const onCreate = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -17,23 +18,15 @@ const onCreate = function (event) {
   }
 }
 
+// Manifests the database, called by the user on sign in
 const onIndex = function () {
   api.index()
     .then(ui.indexSuccess)
     .catch(ui.indexFailure)
 }
 
-// const onShow = function (event) {
-//   event.preventDefault()
-//   let data = getFormFields(event.target)
-//   data = data.movie
-//   api.show(data.id)
-//     .then(ui.showSuccess)
-//     .catch(ui.showFailure)
-// }
-
+// Calls to the OMDB and displays the information returned
 const onOMDB = function (event) {
-  // needs to throw a message when given an invalid return
   event.preventDefault()
   const data = getFormFields(this)
   if (ui.validate(data.movie.title) === true) {
@@ -45,12 +38,20 @@ const onOMDB = function (event) {
   }
 }
 
+// adds event handler which toggles which part of the app is user-facing
 const onToggle = function (event) {
   event.preventDefault()
   ui.toggle()
 }
 
-// called with a button press. Because surface level destroy button has been removed and destroy buttons are being built with handlebars in the ui, this event is superflous, but not to be deleted yet.
+// const onShow = function (event) {
+//   event.preventDefault()
+//   let data = getFormFields(event.target)
+//   data = data.movie
+//   api.show(data.id)
+//     .then(ui.showSuccess)
+//     .catch(ui.showFailure)
+// }
 
 // const onDestroy = function (event) {
 //   event.preventDefault()

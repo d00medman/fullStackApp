@@ -1,7 +1,10 @@
 'use strict'
 
 const store = require('../store.js')
+
+// Needed to create user index on sign in
 const movieEvents = require('../movies/events.js')
+// Needed to reset toggle on user sign out
 const movieUi = require('../movies/ui.js')
 
 // Displays that user has signed up successfully

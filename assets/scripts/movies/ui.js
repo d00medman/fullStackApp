@@ -1,5 +1,6 @@
 'use strict'
 
+// handlebars templates
 const showMoviesTemplate = require('../templates/movie-listing.handlebars')
 const addMovieTemplate = require('../templates/add-movie.handlebars')
 const movieTitle = require('../templates/movie-title.handlebars')
@@ -8,13 +9,16 @@ const omdbOutput = require('../templates/omdb-output.handlebars')
 const api = require('./api')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
+// Used to determine which display the user should see
 let omdboOn = true
 
+// A status check which allows for a reset when the user signs out
 const omdbStatus = () => {
   const status = omdboOn
   return status
 }
 
+// toggles which element of the application is visible to the user
 const toggle = () => {
   const omdb = document.querySelector('.omdb-section')
   const list = document.querySelector('.list-section')
@@ -36,22 +40,24 @@ const toggle = () => {
   }
 }
 
+// Checks input string to see if it is empty
 const validate = (input) => {
   if (/[a-z]/.test(input.toLowerCase()) === false) { return false }
   return true
 }
 
+// Removes item from HTML
 const destroySuccess = (response) => {
   $('.core-alert').text('You have removed an item from your list of favorites')
   $(response.target).parent().remove()
 }
 
+// informs of a failure to destroy
 const destroyFailure = (error) => {
   $('.core-alert').text('Sorry, we were unable to remove your selected movie')
 }
 
-// current implementation of destroy method.
-// Needs to inhabit ui file becuase I don not know how to link to the events file and make onDestroy work.
+// Destroy event. Needs to inhabit ui file becuase I don not know how to link to the events file and make onDestroy work.
 const destroy = (event) => {
   event.preventDefault()
   const targ = $(event.target).attr('data-id')
@@ -60,6 +66,7 @@ const destroy = (event) => {
     .catch(destroyFailure)
 }
 
+// Fires upon successful update of list item
 const updateSuccess = (response, data) => {
   const targ = $(response.target).attr('data-id')
   const title = movieTitle({ movie: data.movie })
@@ -68,10 +75,12 @@ const updateSuccess = (response, data) => {
   document.getElementById(targ).reset()
 }
 
+// Fires upon unsuccessful update of list item
 const updateFailure = (error) => {
   $('.core-alert').text('What should we change this item to?')
 }
 
+// Update event. Must inhabit UI file for same reason as destroy
 const update = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -85,6 +94,7 @@ const update = (event) => {
   }
 }
 
+// Fires upon successful creation
 const createSuccess = (response) => {
   const title = movieTitle({ movie: response.movie })
   $('.core-alert').text('You have added ' + title + ' to your list of favorites')
@@ -95,6 +105,7 @@ const createSuccess = (response) => {
   document.getElementById('create').reset()
 }
 
+// Fires upon failed creation
 const createFailure = (error) => {
   $('.core-alert').text('Please give us a movie to create!')
 }
@@ -109,6 +120,7 @@ const indexSuccess = (response) => {
   $(list).hide()
 }
 
+// Fires if index call fails
 const indexFailure = (error) => {
   $('.core-alert').text('Sorry, we were unable to retrieve your favorites!')
 }
@@ -117,6 +129,7 @@ const indexFailure = (error) => {
 //
 // const showFailure = (error) => {}
 
+// Manifests data returned by OMDB for user
 const omdbGetSuccess = (response) => {
   if (response.Response !== 'False') {
     const output = omdbOutput({ movie: response }) // This could fail => could be passing the wrong data through to handlebars
@@ -127,6 +140,7 @@ const omdbGetSuccess = (response) => {
   document.getElementById('omdb').reset()
 }
 
+// Fires on failed OMDB call
 const omdbGetFailure = (error) => {
   $('.core-alert').html('Could not access the OMDB, please try again.')
 }
