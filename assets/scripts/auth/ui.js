@@ -3,16 +3,15 @@
 const store = require('../store.js')
 const movieEvents = require('../movies/events.js')
 
-
 // Displays that user has signed up successfully
 const signUpSuccess = (response) => {
-  $('.loginAlert').text('You have successfully signed up')
+  $('.loginAlert').text('You Have Successfully Signed Up')
   document.getElementById('sign-up').reset()
 }
 
 // Displays users failure to sign up
 const signUpFailure = (error) => {
-  $('.loginAlert').text('Not a viable username.')
+  $('.loginAlert').text('You Have Failed to Sign Up, Please Try Again')
 }
 
 // Hides login-info section, sets the board and footer to visible on success
@@ -29,7 +28,7 @@ const signInSuccess = (response) => {
 
 // Displays users failure to sign in
 const signInFailure = (error) => {
-  $('.loginAlert').text('login attempt failed.')
+  $('.loginAlert').text('You Have Failed to Sign In, Please Try Again')
 }
 
 // Displays that user has successfully changed password
@@ -46,7 +45,7 @@ const changePasswordFailure = (error) => {
 // displays that user has logged out. Sets board and footer to hidden, makes login-info visible
 const signOutSuccess = (response) => {
   store.user = null
-  $('.loginAlert').text('You have logged out')
+  $('.loginAlert').text('You Have Signed Out')
   const login = document.querySelector('.login')
   $(login).show()
   document.querySelector('.login').style.visibility = 'visible'
