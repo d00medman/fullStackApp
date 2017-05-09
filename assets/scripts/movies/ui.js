@@ -39,11 +39,9 @@ const updateSuccess = (response, data) => {
   $('.core-alert').text('You have changed one of your favorites')
   document.getElementById(targ).reset()
 }
-// There is an odd behavioral quirk going on in this method. For whatever reason, when you sign out, then sign in again, any items which have been patched are now at the bottom of the list.
 
 const updateFailure = (error) => {
   $('.core-alert').text('What should we change this item to?')
-  // going to want to build an update alert into my handlebars html
 }
 
 const update = (event) => {
