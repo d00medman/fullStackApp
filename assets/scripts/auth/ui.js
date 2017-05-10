@@ -56,6 +56,7 @@ const signOutSuccess = (response) => {
   document.querySelector('.logout').style.visibility = 'hidden'
   $('.content').text('')
   $('.core-alert').text('')
+  $('.omdb-output').text('')
   if (movieUi.omdbStatus() === false) {
     movieUi.toggle()
   }
