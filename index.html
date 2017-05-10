@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Lights Camera Action</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags unless you know what you are doing -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <header>
+        <h1>Lights, Camera, Action!</h1>
+        <h4 class="subhead">Helping You Brag About Your Taste in Cinema to Strangers on the Internet</h4>
+      </header>
+
+      <div class="login">
+        <h3 class="loginAlert">Please Sign In</h3>
+        <form id="sign-up">
+          <fieldset>
+            <legend>Sign Up</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <input type="submit" name="submit" value="Sign Up">
+          </fieldset>
+        </form>
+        <form id ="sign-in">
+          <fieldset>
+            <legend>Sign In</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="submit" name="submit" value="Sign In">
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="core">
+        <h3 class="core-headline">Find Your Favorite Movies</h3>
+        <h5 class="core-alert"></h5>
+
+        <div class="omdb-section">
+          <h4>Search the OMDB</h4>
+          <form class="omdb" id="omdb">
+            <fieldset>
+              <input type="text" name="movie[title]" placeholder="Favorite Movie">
+              <input type="submit" name="submit" value="Search">
+            </fieldset>
+          </form>
+
+          <div class="omdb-output"></div>
+        </div>
+
+        <div class="list-section">
+
+          <form class="create" id="create">
+            <h4>Add a New Movie to Your Favoites</h4>
+            <fieldset>
+              <input type="text" name="movie[title]" placeholder="Favorite Movie">
+              <input type="submit" name="submit" value="Add to Favorites!">
+            </fieldset>
+          </form>
+
+          <div id="display" class="content"></div>
+          <!-- <form class="show">
+            <fieldset>
+              <input type="integer" name="movie[id]" placeholder="Find movie by ID">
+              <input type="submit" name="submit" value="Submit ID">
+            </fieldset>
+          </form> -->
+        </div>
+
+        <h6>Toggle widgets</h6>
+        <button class="toggle">Show Your Favorite Movies</button>
+
+      </div>
+      <footer>
+        <div class="logout">
+          <!--These are waaaay to close to the content. Need to be isolated-->
+          <h4 class="logout-banner">Change Your Password or Sign Out Here</h4>
+          <h6 class="pass-change-alert"></h6>
+          <form id="change-password">
+            <fieldset>
+              <h5>Change Password</h5>
+              <input type="password" name="passwords[old]" placeholder="Old Password">
+              <input type="password" name="passwords[new]" placeholder="New Password">
+              <input type="submit" name="submit" value="Change Password">
+            </fieldset>
+          </form>
+          <form id ="sign-out">
+            <input class="sobutton" type="submit" name="submit" value="Sign Out">
+          </form>
+        </div>
+      </footer>
+    </body>
+</html>
